@@ -1,7 +1,7 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
-import { PrismaClient } from '@prisma/client';
 import cors from 'cors';
 import morgan from 'morgan';
+import userRoutes from './routes/user.js';
 import dotenv from 'dotenv';
 
 
@@ -14,6 +14,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
+
+app.use('/api/users', userRoutes);
+
 
 app.use('/', (req,res)=>{
     res.send('hii ')

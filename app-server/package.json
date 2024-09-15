@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "dev": "concurrently \"npm run watch-ts\" \"npm run watch-node\"",
+    "watch-ts": "tsc -w",
+    "watch-node": "nodemon dist/index.js",
+    "clean": "rm -rf dist",
+    "build-ts": "tsc",
+    "postinstall": "npm run build-ts",
+    "deploy": "npm run build && npm start"
   },
   "keywords": [],
   "author": "",
@@ -19,10 +27,13 @@
   },
   "dependencies": {
     "@prisma/client": "^5.19.1",
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
+    "nodemon": "^3.1.4",
     "prisma": "^5.19.1"
   }
 }
