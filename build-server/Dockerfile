@@ -19,7 +19,7 @@ RUN npm install
 
 # giving exexutable permissions 
 RUN chmod +x main.sh
-RUN chmod +x script
+RUN chmod +x script.js
 
 # when container up and running this 
 # main.sh automatically executes
